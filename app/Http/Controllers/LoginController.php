@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest as Request;
 
 class LoginController extends Controller
 {
