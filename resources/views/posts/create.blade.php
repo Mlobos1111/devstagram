@@ -3,11 +3,16 @@
 @section('titulo')
 Publicaciones
 @endsection
-
 @section('contenido')
+@push('styles')
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
 <div class="md:flex md:items-center">
+  
     <div class="md:w-1/2 px-10">
-        imagenes
+        <form action="{{route('imagenes.store')}}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+        @csrf
+        </form>
     </div>
     <div class="md:w-1/2 p-10 bg-white rounded-lg shadow-lg mt-10 md:mt-0">
         <form action={{"register"}} method="POST" novalidate>
@@ -25,8 +30,7 @@ Publicaciones
                 <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">
                     Descripción
                 </label>
-                <textarea id="descripcion" name="descripcion" placeholder="Descripción" class="border-2 border-gray-300 p-2 w-full rounded-lg @error('name') border-red-500 @enderror"
-                 >{{old('name')}}</textarea>
+                <textarea id="descripcion" name="descripcion" placeholder="Descripción" class="border-2 border-gray-300 p-2 w-full rounded-lg @error('name') border-red-500 @enderror">{{old('name')}}</textarea>
                 @error('titulo')
                 <span class="text-red-500 text-xs">{{$message}}</span>
                 @enderror
