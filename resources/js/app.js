@@ -8,11 +8,11 @@ const dropzone = new Dropzone('#dropzone', {
     dictRemoveFile: 'Eliminar imagen',
     addRemoveLinks: true,
     maxFiles: 1,
-    uploadMulti: false,
+    uploadMultiple: false,
 }); 
 
 dropzone.on('sending', (file, xhr,formData) => {
-    console.log(file);
+    console.log(formData);
 
 })
 dropzone.on('success', (file, response) => {
